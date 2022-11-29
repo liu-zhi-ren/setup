@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-apollo
+  namespace: mars-tools
+  annotations:
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-name: "route"
+    nginx.ingress.kubernetes.io/session-cookie-expires: "172800"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
+spec:
+  rules:
+  - host: apollo.dntu.net
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: service-apollo-config-server-prod
+          servicePort: 8080
+  - host: apollo-portal.dntu.net
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: service-apollo-portal-server
+          servicePort: 8080

@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  namespace: mars-tools
+  name: service-mysql-for-apollo-prod-env
+  labels:
+    app: service-mysql-for-apollo-prod-env
+spec:
+  externalName: rm-2ze4fed7x1x0apc86.mysql.rds.aliyuncs.com
+  type: ExternalName
